@@ -21,7 +21,7 @@ public class Main {
                 switch (choice) {
                     case 1:
                         // Add Income
-                        System.out.println("Enter the descrpiption of the income: ");
+                        System.out.println("Enter the description of the income: ");
                         String description = input.nextLine();
                         System.out.println("Enter the amount of the income: ");
                         double amount = Double.parseDouble(input.nextLine());
