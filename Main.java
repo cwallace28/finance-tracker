@@ -12,7 +12,9 @@ public class Main {
             System.out.println("2. Add Expense");
             System.out.println("3. View Transactions");
             System.out.println("4. View Total Income/Expense");
-            System.out.println("5. Exit");
+            System.out.println("5. View Total");
+            System.out.println("6. Exit");
+            System.out.println("===============================================");
             System.out.print("Enter your choice: ");
 
             try{
@@ -55,13 +57,36 @@ public class Main {
 
                     case 4:
                         // View Total Income/Expense
-                        System.out.println("Total Income: " + transactions.getTotalAmountByType("Income"));
-                        System.out.println("Total Expense: " + transactions.getTotalAmountByType("Expense"));
-                        System.out.println("Net Total: " + (transactions.getTotalAmountByType("Income") - transactions.getTotalAmountByType("Expense")));
+                        System.out.println("Total Income: $" + transactions.getTotalAmountByType("Income"));
+                        System.out.println("Total Expense: $" + transactions.getTotalAmountByType("Expense"));
+                        System.out.println("Net Total: $" + (transactions.getTotalAmountByType("Income") - transactions.getTotalAmountByType("Expense")));
                         break;
 
-
+                    
                     case 5:
+                        // View Total
+                        System.out.println("What would you like to view the total of?");
+                        System.out.println("1. Total Income");
+                        System.out.println("2. Total Expense");
+                        System.out.println("3. Net Total");
+
+                        int totalChoice = Integer.parseInt(input.nextLine());
+                        switch (totalChoice) {
+                            case 1:
+                                System.out.println("Total Income: $" + transactions.getTotalIncome());
+                                break;
+                            case 2:
+                                System.out.println("Total Expense: $" + transactions.getTotalExpense());
+                                break;
+                            case 3:
+                                System.out.println("Net Total: $" + (transactions.getTotalIncome() - transactions.getTotalExpense()));
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                        }
+                        break;
+
+                    case 6:
                         System.out.println("Exiting the program. Goodbye!");
                         choice = 0;
                         input.close();
@@ -71,6 +96,7 @@ public class Main {
                     default:
 
                         System.out.println("Invalid choice. Please try again.");
+
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a number.");
