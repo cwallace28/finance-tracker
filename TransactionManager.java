@@ -1,9 +1,12 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionManager<T extends Transactions>  {
+public class TransactionManager<T extends Transactions> {
     private List<T> transactions = new ArrayList<>();
 
 
@@ -89,19 +92,29 @@ public class TransactionManager<T extends Transactions>  {
             BufferedWriter incomingWriter = new BufferedWriter(new FileWriter(incomingFilePath));
             BufferedWriter expenseWriter = new BufferedWriter(new FileWriter(expenseFilePath))
         ) {
-            
+            // Write header for incoming transactions
+            for (T transaction : transactions) {
+                if (transaction instanceof Income) {
+                    Income income = (Income) transaction;
+                    incomingWriter.write(income.getDescription() + "," + income.getAmount() + "," + income.getDate() + "," + income.getSource());
+                    incomingWriter.newLine();
+                } else if (transaction instanceof Expenses){
+                    expenseWriter.write(transaction.toString());
+                    expenseWriter.newLine();
+                }
+            }
         } catch (Exception e) {
-            // TODO: handle exception
+            // Handle exceptions related to file writing
             System.out.println(expenseFilePath + " not found.");
-        }
+        } 
 
         
     }
 
-    public void loadFromFile(String incomingFilePath, String expenseFilePath){
+    // This method is going to be used to load transactions from files (WIP)
+    public void loadFromFile(String incomingFilePath, String expenseFilePath) {
         // Implement file loading logic here
 
+            
     }
-
-
 }

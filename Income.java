@@ -26,4 +26,24 @@ public class Income extends Transactions {
         return source;
     }
 
+    public String getDescription() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDescription'");
+    }
+
+    public String getAmount() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAmount'");
+    }
+
+    public String getDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDate'");
+    }
+
+    public String getSource() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSource'");
+    }
+
 }
