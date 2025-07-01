@@ -13,7 +13,7 @@ public class Main {
             System.out.println("3. View Transactions");
             System.out.println("4. View Total Income/Expense");
             System.out.println("5. View Total");
-            System.out.println("6. Exit");
+            System.out.println("6. Save and Exit");
             System.out.println("===============================================");
             System.out.print("Enter your choice: ");
 
@@ -87,14 +87,25 @@ public class Main {
                         break;
 
                     case 6:
+                        System.out.println("Are you sure you want to save and exit the program?  Be sure that you've added everything you wanted to keep in check of! (yes/no)");
+                        String confirm = input.nextLine();
+                        if (!confirm.equalsIgnoreCase("yes")) {
+                            System.out.println("Exiting without saving.");
+                            continue; // Go back to the main menu
+                        } else {
+                            System.out.println("Saving transactions and exiting the program. Please wait a moment..");
+                            // Here the saveToFile method would be called to save the transactions in their own respective files.
+                            transactions.saveToFile("income.txt", "expense.txt");
+                            // Printing Message to indicate successful saving of transactions.
+                            System.out.println("Transactions saved successfully! Exiting the program");
+                        }
+                        break;
+                    case 7:
                         System.out.println("Exiting the program. Goodbye!");
                         choice = 0;
                         input.close();
-                        break; 
-
-
+                        break;
                     default:
-
                         System.out.println("Invalid choice. Please try again.");
 
                 }
